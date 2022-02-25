@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/round_background"
+    android:weightSum="3"
+    android:orientation="vertical"
     >
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="300dp"
-            android:layout_height="158dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/login_background">
 
 
             <TextView
                 android:id="@+id/pro_info"
-                android:layout_width="123dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -37,14 +40,23 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:weightSum="4"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
             <Button
+                android:layout_marginTop="20dp"
                 android:id="@+id/project_manage"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:drawableLeft="@drawable/ic_account"
                 android:text="ManageProject"
@@ -57,10 +69,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.121" />
-
             <Button
                 android:id="@+id/add_new_user"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:drawableLeft="@drawable/ic_account"
                 android:text="Add new user"
@@ -74,6 +85,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/project_manage"
                 app:layout_constraintVertical_bias="0.084" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

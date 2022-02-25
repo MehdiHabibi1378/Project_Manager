@@ -64,6 +64,9 @@ public class Task extends Fragment {
         task_setting = view.findViewById(R.id.setting_task);
         task_gride = view.findViewById(R.id.gride_task);
         drawerTask = view.findViewById(R.id.draTask);
+        if (MainActivity.prefConfig.readName().equals(MainActivity.prefConfig.readProjectManager())){
+            task_setting.setVisibility(View.VISIBLE);
+        }
 //get info
         String manager = MainActivity.prefConfig.readProjectManager();
         String project_name = MainActivity.prefConfig.readProjectName();

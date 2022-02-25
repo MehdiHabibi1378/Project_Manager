@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:weightSum="5"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="108dp"
+            android:layout_height="match_parent"
             android:background="@drawable/round_background">
 
             <TextView
                 android:id="@+id/info_name"
+                android:singleLine="true"
                 android:textSize="20sp"
-                android:layout_width="115dp"
-                android:layout_height="37dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -33,16 +34,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="match_parent">
 
             <View
                 android:id="@+id/view"
@@ -104,10 +104,16 @@
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="match_parent">
 
             <View
                 android:id="@+id/view1"
@@ -169,10 +175,16 @@
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="match_parent">
 
             <View
                 android:id="@+id/view2"
@@ -235,9 +247,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/delete_task"
@@ -252,10 +270,5 @@
                 app:srcCompat="@drawable/ic_delete" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </LinearLayout>
-
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

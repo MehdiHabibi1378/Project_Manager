@@ -43,7 +43,12 @@ public class TaskMenu extends Fragment {
        manage_pro.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               loginFormActivityListener.performProjectManage();
+               if (MainActivity.prefConfig.readName().equals(MainActivity.prefConfig.readProjectManager())){
+                   loginFormActivityListener.performProjectManage();
+               }else {
+                   MainActivity.prefConfig.displayToast("Only Managers");
+               }
+
            }
        });
 

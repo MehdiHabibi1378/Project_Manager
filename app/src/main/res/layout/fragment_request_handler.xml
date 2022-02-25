@@ -18,7 +18,7 @@
             android:gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="assign to"
+            android:text="messages"
             android:textColor="@color/orange"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +35,7 @@
         android:layout_weight="7"
         android:paddingLeft="10dp">
         <GridView
-            android:id="@+id/assign_grid"
+            android:id="@+id/message_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"

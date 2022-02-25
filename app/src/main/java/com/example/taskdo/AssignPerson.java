@@ -30,10 +30,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AssignPerson extends Fragment {
+public class AssignPerson extends Fragment implements OnItemSelectedListener {
 
-    ImageView add;
-    TextView assign_name;
     GridView assign_grid;
     String name,manager,project_name,assign=null;
     ArrayList<String> project_members = new ArrayList<>();
@@ -51,30 +49,10 @@ public class AssignPerson extends Fragment {
         name = MainActivity.prefConfig.readTaskName();
         manager = MainActivity.prefConfig.readProjectManager();
         project_name = MainActivity.prefConfig.readProjectName();
-
-        add = view.findViewById(R.id.assign);
-        assign_name = view.findViewById(R.id.assign_to);
         assign_grid = view.findViewById(R.id.assign_grid);
         updateMembers();
-        MemberAdapter adapter = new MemberAdapter(project_members);
+        MemberAdapter adapter = new MemberAdapter(project_members,this);
         assign_grid.setAdapter(adapter);
-        assign_grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                assign_name.setText(project_members.get(position));
-                assign=project_members.get(position);
-            }
-        });
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (assign!=null){
-                    updateMembers(assign);
-                }
-            }
-        });
-
         return view;
     }
 
@@ -109,35 +87,6 @@ public class AssignPerson extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-//        Call<User> call = MainActivity.apiInterface.performMembers(project_name,manager);
-//        call.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                if (response.body().getStatus().equals("ok")){
-//                    String raw = response.body().getResponse();
-//                    JSONArray jsonArray = null;
-//                    try {
-//                        jsonArray = new JSONArray(raw);
-//                        for (int i = 0; i < jsonArray.length(); i++) {
-//                            raw = jsonArray.getString(i);
-//                            JSONObject responsJson = new JSONObject(raw);
-//                            String username;
-//                            username = responsJson.getString("username");
-//                            project_members.add(username);
-//                        }
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    //responsJson = new JSONObject((Map) jsonArray);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//            }
-//        });
     }
     //update doby
     private void updateMembers(String doby){
@@ -177,16 +126,22 @@ public class AssignPerson extends Fragment {
             loginFormActivityListener.performTaskInfo();
         }
     };
+
+    @Override
+    public void onItemSelected(String user_name) {
+        updateMembers(user_name);
+    }
 }
 
 class MemberAdapter extends BaseAdapter {
 
-
+    OnItemSelectedListener listener;
     ArrayList<String> member_lists ;
-    TextView member;
+    TextView member,add;
 
-    public MemberAdapter(ArrayList<String> list){
+    public MemberAdapter(ArrayList<String> list,OnItemSelectedListener listener){
         this.member_lists = list;
+        this.listener = listener;
 
     }
 
@@ -210,7 +165,14 @@ class MemberAdapter extends BaseAdapter {
         if (view == null){
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_grid,parent,false);
             member = view.findViewById(R.id.memberText);
+            add = view.findViewById(R.id.add);
             member.setText(member_lists.get(position));
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemSelected(member_lists.get(position));
+                }
+            });
         }
         return view;
     }

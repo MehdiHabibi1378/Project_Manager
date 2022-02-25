@@ -15,8 +15,8 @@
         android:background="@drawable/round_background">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="410dp"
-            android:layout_height="66dp"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
@@ -24,8 +24,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-
                 <ImageView
                     android:id="@+id/setting_task"
                     android:layout_width="53dp"
@@ -37,9 +35,25 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.521" />
 
+                <ImageView
+                    android:id="@+id/message"
+                    android:visibility="gone"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_message"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/setting_task"
+                    app:layout_constraintHorizontal_bias="0.883"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.615">
+
+                </ImageView>
+
                 <TextView
-                    android:layout_width="218dp"
-                    android:layout_height="28dp"
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Project"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -56,10 +70,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="8">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="592dp"
+                android:layout_height="0dp"
+                android:layout_weight="7"
                 android:orientation="vertical">
                 <GridView
                     android:id="@+id/gride_task"
@@ -81,25 +97,32 @@
 
             </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/add_task"
-                    android:layout_width="55dp"
-                    android:layout_height="42dp"
-                    android:background="@drawable/shape"
-                    app:icon="@drawable/ic_add"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.96"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.6"
-                    tools:ignore="MissingConstraints,UnknownId" />
+                    <Button
+                        android:id="@+id/add_task"
+                        android:layout_width="55dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/shape"
+                        app:icon="@drawable/ic_add"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.96"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.6"
+                        tools:ignore="MissingConstraints,UnknownId" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

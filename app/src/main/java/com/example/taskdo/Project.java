@@ -39,7 +39,7 @@ public class Project extends Fragment {
     OnLoginFormActivityListener loginFormActivityListener;
     //TextView UserInfo ;
     Button add;
-    ImageView setting;
+    ImageView setting,message;
     GridView project_gride;
     DrawerLayout drawerLayout ;
     public Project() {
@@ -99,6 +99,16 @@ public class Project extends Fragment {
 
         //UserInfo = view.findViewById(R.id.userText);
         setting = view.findViewById(R.id.setting_task);
+        message = view.findViewById(R.id.message);
+        if (setVisibility()){
+            message.setVisibility(View.VISIBLE);
+        }
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginFormActivityListener.performMessage();
+            }
+        });
         add = view.findViewById(R.id.add_task);
         //UserInfo.setText(MainActivity.prefConfig.readName());
         drawerLayout =(DrawerLayout) view.findViewById(R.id.draTest);
@@ -130,6 +140,44 @@ public class Project extends Fragment {
 
 
          return view;
+    }
+
+    private boolean setVisibility(){
+        ArrayList<Project_list> list = new ArrayList<>();
+        String url = "request_list.php?user_name="+MainActivity.prefConfig.readName();
+        GetData getdata = new GetData(url);
+        getdata.execute();
+
+        try{
+
+            String res = (String) getdata.get();
+            JSONObject responsJson = new JSONObject(res);
+            String raw = responsJson.getString("response");
+            System.out.println(raw);
+            if (responsJson.getString("status").equals("ok")) {
+
+                JSONArray jsonArray = new JSONArray(raw);
+                //responsJson = new JSONObject((Map) jsonArray);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    raw = jsonArray.getString(i);
+                    responsJson = new JSONObject(raw);
+                    String name, manager;
+                    name = responsJson.getString("name");
+                    manager = responsJson.getString("manager");
+                    list.add(new Project_list(name, manager));
+                }
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (list.size()>0)
+            return true;
+        return false;
     }
 
 

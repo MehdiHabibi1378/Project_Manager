@@ -27,6 +27,7 @@
 
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/setting_task"
                     android:layout_width="53dp"
                     android:layout_height="43dp"
@@ -38,8 +39,8 @@
                     app:layout_constraintVertical_bias="0.521" />
 
                 <TextView
-                    android:layout_width="218dp"
-                    android:layout_height="28dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Task"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -56,10 +57,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="8">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="592dp"
+                android:layout_height="0dp"
+                android:layout_weight="7"
                 android:orientation="vertical">
                 <GridView
                     android:id="@+id/gride_task"
@@ -80,26 +83,33 @@
                 </GridView>
 
             </LinearLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/add_task"
-                    android:layout_width="55dp"
-                    android:layout_height="42dp"
-                    android:background="@drawable/shape"
-                    app:icon="@drawable/ic_add"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.96"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.6"
-                    tools:ignore="MissingConstraints,UnknownId" />
+                    <Button
+                        android:id="@+id/add_task"
+                        android:layout_width="55dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/shape"
+                        app:icon="@drawable/ic_add"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.96"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.6"
+                        tools:ignore="MissingConstraints,UnknownId" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </LinearLayout>

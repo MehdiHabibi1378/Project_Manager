@@ -13,4 +13,5 @@ public interface OnLoginFormActivityListener {
     public void performTaskInfo();
     public void performProjectManage();
     public void performAssign();
+    public void performMessage();
 }

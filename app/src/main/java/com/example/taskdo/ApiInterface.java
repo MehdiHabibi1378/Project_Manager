@@ -42,4 +42,13 @@ public interface ApiInterface {
     @GET("delete_task.php")
     Call<User> performDeleteTask(@Query("name") String name,@Query("project_name")String project_name,
                                  @Query("project_manager") String manager);
+
+    @GET("delete_project.php")
+    Call<User> performDeleteProject(@Query("name") String name, @Query("manager") String manager);
+
+    @GET("request.php")
+    Call<User> performRequest(@Query("name") String name,@Query("manager") String manager,@Query("user_name") String username);
+
+    @GET("delete_request.php")
+    Call<User> performDeleteRequest(@Query("name") String name,@Query("manager") String manager,@Query("user_name") String username);
 }

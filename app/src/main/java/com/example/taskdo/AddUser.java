@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -20,7 +21,7 @@ import retrofit2.Response;
 public class AddUser extends Fragment {
 
     TextView username;
-    Button add;
+    ImageView add;
     OnLoginFormActivityListener loginFormActivityListener;
 
     public AddUser() {
@@ -43,6 +44,15 @@ public class AddUser extends Fragment {
            }
        });
 
+        // back
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                loginFormActivityListener.performTask();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(),callback);
+
        return view;
     }
 
@@ -58,27 +68,34 @@ public class AddUser extends Fragment {
         String Username = username.getText().toString();
         String name = MainActivity.prefConfig.readProjectName();
 
-        Call<User> call = MainActivity.apiInterface.performAddProject(name,manager,Username);
+        if (Username!=null){
+            Call<User> call = MainActivity.apiInterface.performRequest(name,manager,Username);
 
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.body().getResponse().equals("ok")){
-                    loginFormActivityListener.performProject();
-                }else if (response.body().getResponse().equals("exist")){
-                    MainActivity.prefConfig.displayToast("Project has exist now");
-                }else if (response.body().getResponse().equals("error")){
-                    MainActivity.prefConfig.displayToast("try again");
-                }else if (response.body().getResponse().equals("user_not_found")){
-                    MainActivity.prefConfig.displayToast("user_not_found");
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.body().getResponse().equals("ok")){
+                        MainActivity.prefConfig.displayToast("Send Request");
+                        loginFormActivityListener.performTask();
+                    }else if (response.body().getResponse().equals("exist_in_project")){
+                        MainActivity.prefConfig.displayToast("User has now exist");
+                    }else if (response.body().getResponse().equals("exist")){
+                        MainActivity.prefConfig.displayToast("request before sends");
+                    }else if (response.body().getResponse().equals("error")){
+                        MainActivity.prefConfig.displayToast("try again");
+                    }else if (response.body().getResponse().equals("user_not_found")){
+                        MainActivity.prefConfig.displayToast("user_not_found");
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        }else
+            MainActivity.prefConfig.displayToast("Please write a name");
+
     }
 
     // back

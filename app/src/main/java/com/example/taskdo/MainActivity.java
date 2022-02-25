@@ -3,6 +3,7 @@ package com.example.taskdo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Message;
 
 public class MainActivity extends AppCompatActivity implements OnLoginFormActivityListener {
 
@@ -86,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements OnLoginFormActivi
     @Override
     public void performAssign() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AssignPerson()).commit();
+    }
+
+    @Override
+    public void performMessage() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new RequestHandler()).commit();
     }
 
 }

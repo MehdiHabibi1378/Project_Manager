@@ -20,14 +20,16 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/currncy_grid.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_add_project.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_add_task.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_add_user.xml" value="0.14" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_assign_person.xml" value="0.22" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_proje.xml" value="0.1503623188405797" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_project.xml" value="0.22" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_project__manage.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_project_menu.xml" value="0.21" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_register.xml" value="0.16" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_task.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_request_handler.xml" value="0.12001811594202899" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_task.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_task_info.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_task_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/fragment_test.xml" value="0.22" />
@@ -35,11 +37,13 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/gride_style.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/list_gride.xml" value="0.16259057971014493" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/member_grid.xml" value="0.15534420289855072" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/message_style.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/project_gride.xml" value="0.25" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/project_manage_style.xml" value="0.16" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/project_manage_style.xml" value="0.18" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/task_gride.xml" value="0.25" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/task_info.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/task_info.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/test.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/layout/ts.xml" value="0.18" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/menu/popup.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TaskDo/app/src/main/res/menu/project_list_map.xml" value="0.20416666666666666" />
