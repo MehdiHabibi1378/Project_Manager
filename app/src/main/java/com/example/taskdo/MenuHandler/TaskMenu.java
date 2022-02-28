@@ -1,4 +1,4 @@
-package com.example.taskdo;
+package com.example.taskdo.MenuHandler;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+import com.example.taskdo.MainActivity;
+import com.example.taskdo.R;
 
 public class TaskMenu extends Fragment {
 
@@ -32,6 +36,11 @@ public class TaskMenu extends Fragment {
        manage_pro = view.findViewById(R.id.project_manage);
        add_user = view.findViewById(R.id.add_new_user);
        name.setText(MainActivity.prefConfig.readTaskName());
+
+       if (MainActivity.prefConfig.readName().equals(MainActivity.prefConfig.readProjectManager())){
+           manage_pro.setVisibility(View.VISIBLE);
+           add_user.setVisibility(View.VISIBLE);
+       }
 
        add_user.setOnClickListener(new View.OnClickListener() {
            @Override

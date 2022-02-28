@@ -1,9 +1,8 @@
-package com.example.taskdo;
+package com.example.taskdo.ProjectHandler;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +19,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.taskdo.GetData;
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+import com.example.taskdo.MainActivity;
+import com.example.taskdo.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -52,8 +50,8 @@ public class Project extends Fragment {
                              Bundle savedInstanceState) {
          View view =inflater.inflate(R.layout.fragment_project, container, false);
 
-        String url = "http://192.168.1.6//testing/project_list.php?user_name="+MainActivity.prefConfig.readName();
-        getData_project getdata = new getData_project(url);
+        String url = "project_list.php?user_name="+ MainActivity.prefConfig.readName();
+        GetData getdata = new GetData(url);
         getdata.execute();
 
         try{
@@ -299,41 +297,4 @@ class ProjectAdapter extends BaseAdapter {
     }
     
 
-}
-
-class getData_project extends AsyncTask {
-    String url ;
-    public getData_project(String url){
-        this.url = url;
-    }
-
-    @Override
-    protected Object doInBackground(Object[] objects) {
-
-        String res="none";
-        try {
-            URL u = new URL(url);
-
-            HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            StringBuilder sb = new StringBuilder();
-            String line ;
-
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-            res = sb.toString();
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return res;
-    }
 }

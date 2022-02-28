@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Project"
+    tools:context=".ProjectHandler.Project"
     android:id="@+id/draTest">
 
     <LinearLayout
@@ -131,7 +131,7 @@
         android:id="@+id/frag"
         android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:name="com.example.taskdo.ProjectMenuFragment"
+        android:name="com.example.taskdo.MenuHandler.ProjectMenuFragment"
         tools:layout="@layout/fragment_project_menu"
         android:gravity="end"
         android:layout_gravity="end"

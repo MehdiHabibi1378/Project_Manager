@@ -1,11 +1,10 @@
-package com.example.taskdo;
+package com.example.taskdo.TaskHandler;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -17,33 +16,25 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.DatePicker;
-import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import org.json.JSONArray;
+import com.example.taskdo.GetData;
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+import com.example.taskdo.MainActivity;
+import com.example.taskdo.R;
+import com.example.taskdo.Task_list;
+import com.example.taskdo.User;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
@@ -120,9 +111,9 @@ public class TaskInfo extends Fragment implements DatePickerDialog.OnDateSetList
         name = MainActivity.prefConfig.readTaskName();
         manager = MainActivity.prefConfig.readProjectManager();
         project_name = MainActivity.prefConfig.readProjectName();
-        String url = "http://192.168.1.6//testing/task_info.php?name="+name+"&project_name="+project_name
+        String url = "task_info.php?name="+name+"&project_name="+project_name
                 +"&project_manager="+manager;
-        getData_task_info getdata = new getData_task_info(url);
+        GetData getdata = new GetData(url);
         getdata.execute();
 
         try{
@@ -339,43 +330,6 @@ public class TaskInfo extends Fragment implements DatePickerDialog.OnDateSetList
 
             }
         });
-    }
-}
-
-class getData_task_info extends AsyncTask {
-    String url ;
-    public getData_task_info(String url){
-        this.url = url;
-    }
-
-    @Override
-    protected Object doInBackground(Object[] objects) {
-
-        String res="none";
-        try {
-            URL u = new URL(url);
-
-            HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            StringBuilder sb = new StringBuilder();
-            String line ;
-
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-            res = sb.toString();
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return res;
     }
 }
 

@@ -1,4 +1,4 @@
-package com.example.taskdo;
+package com.example.taskdo.ProjectHandler;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,7 +16,12 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.example.taskdo.GetData;
 import com.example.taskdo.Listener.MessageListener;
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+import com.example.taskdo.MainActivity;
+import com.example.taskdo.R;
+import com.example.taskdo.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +65,7 @@ public class RequestHandler extends Fragment implements MessageListener {
     }
 
     private void setProjects(){
-        String url = "request_list.php?user_name="+MainActivity.prefConfig.readName();
+        String url = "request_list.php?user_name="+ MainActivity.prefConfig.readName();
         GetData getdata = new GetData(url);
         getdata.execute();
 

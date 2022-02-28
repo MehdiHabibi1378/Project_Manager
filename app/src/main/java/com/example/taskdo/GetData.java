@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class GetData extends AsyncTask {
     String url,url2 ;
-    String baseUrl = "http://192.168.1.6//testing/";
+    String baseUrl = "http://192.168.1.3//testing/";
     public GetData(String url){
         this.url = url;
     }

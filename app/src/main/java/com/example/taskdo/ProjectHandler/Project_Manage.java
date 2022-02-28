@@ -1,4 +1,4 @@
-package com.example.taskdo;
+package com.example.taskdo.ProjectHandler;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,10 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.taskdo.GetData;
+import com.example.taskdo.Listener.OnItemSelectedListener;
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+import com.example.taskdo.MainActivity;
+import com.example.taskdo.R;
+import com.example.taskdo.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,7 +60,7 @@ public class Project_Manage extends Fragment implements OnItemSelectedListener {
         deleteProject = view.findViewById(R.id.delete_project);
         manager = view.findViewById(R.id.PM_manager);
         user_grid = view.findViewById(R.id.PM_user_grid);
-        name.setText("Name :"+MainActivity.prefConfig.readProjectName());
+        name.setText("Name :"+ MainActivity.prefConfig.readProjectName());
         manager.setText("Manager :"+MainActivity.prefConfig.readProjectManager());
         updateMembers();
         adapter = new ProjectManageAdapter(users,this);
@@ -135,9 +141,9 @@ public class Project_Manage extends Fragment implements OnItemSelectedListener {
 
     private void updateMembers(){
 
-        String url = "http://192.168.1.6//testing/list_of_users.php?name="+MainActivity.prefConfig.readProjectName()
+        String url = "list_of_users.php?name="+MainActivity.prefConfig.readProjectName()
                 +"&manager="+MainActivity.prefConfig.readProjectManager();
-        getData_task_info getdata = new getData_task_info(url);
+        GetData getdata = new GetData(url);
         getdata.execute();
 
         try{

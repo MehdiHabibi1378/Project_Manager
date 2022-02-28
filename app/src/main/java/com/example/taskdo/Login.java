@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,7 +26,6 @@ public class Login extends Fragment {
     private EditText UserName,UserPassword;
     private Button LoginBn;
     OnLoginFormActivityListener loginFormActivityListener;
-    Connection connection ;
 
 //    public interface OnLoginFormActivityListener{
 //
@@ -79,24 +80,28 @@ public class Login extends Fragment {
         String username = UserName.getText().toString();
         String password = UserPassword.getText().toString();
 
-        Call<User> call = MainActivity.apiInterface.performUserLogin(username,password);
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                System.out.println(response.body().getName());
-                if (response.body().getResponse().equals("ok")) {
-                    MainActivity.prefConfig.writeLoginStatus(true);
-                    loginFormActivityListener.performLogin(username);
-                } else if (response.body().getResponse().equals("failed")){
-                    MainActivity.prefConfig.displayToast("Login Faild... palease try again");
+        if (username!=null&&password!=null) {
+            Call<User> call = MainActivity.apiInterface.performUserLogin(username, password);
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    System.out.println(response.body().getName());
+                    if (response.body().getResponse().equals("ok")) {
+                        MainActivity.prefConfig.writeLoginStatus(true);
+                        loginFormActivityListener.performLogin(username);
+                    } else if (response.body().getResponse().equals("failed")) {
+                        MainActivity.prefConfig.displayToast("Login Faild... palease try again");
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        }else {
+            MainActivity.prefConfig.displayToast("Fill in all the blanks");
+        }
 
         UserName.setText("");
         UserPassword.setText("");

@@ -1,8 +1,7 @@
-package com.example.taskdo;
+package com.example.taskdo.TaskHandler;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -24,16 +23,16 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.example.taskdo.GetData;
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+import com.example.taskdo.MainActivity;
+import com.example.taskdo.R;
+import com.example.taskdo.Task_list;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -64,15 +63,12 @@ public class Task extends Fragment {
         task_setting = view.findViewById(R.id.setting_task);
         task_gride = view.findViewById(R.id.gride_task);
         drawerTask = view.findViewById(R.id.draTask);
-        if (MainActivity.prefConfig.readName().equals(MainActivity.prefConfig.readProjectManager())){
-            task_setting.setVisibility(View.VISIBLE);
-        }
 //get info
         String manager = MainActivity.prefConfig.readProjectManager();
         String project_name = MainActivity.prefConfig.readProjectName();
-        String url = "http://192.168.1.6//testing/task_list.php?project_name="+project_name
+        String url = "task_list.php?project_name="+project_name
                 +"&project_manager="+manager;
-        getData_Task getdata = new getData_Task(url);
+        GetData getdata = new GetData(url);
         getdata.execute();
 
         try{
@@ -183,44 +179,6 @@ public class Task extends Fragment {
         super.onAttach(context);
         Activity activity = (Activity) context;
         loginFormActivityListener = (OnLoginFormActivityListener) activity;
-    }
-}
-
-
-class getData_Task extends AsyncTask {
-    String url ;
-    public getData_Task(String url){
-        this.url = url;
-    }
-
-    @Override
-    protected Object doInBackground(Object[] objects) {
-
-        String res="none";
-        try {
-            URL u = new URL(url);
-
-            HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            StringBuilder sb = new StringBuilder();
-            String line ;
-
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-            res = sb.toString();
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return res;
     }
 }
 

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Task"
+    tools:context=".TaskHandler.Task"
     android:id="@+id/draTask">
 
     <LinearLayout
@@ -27,7 +27,6 @@
 
 
                 <ImageView
-                    android:visibility="gone"
                     android:id="@+id/setting_task"
                     android:layout_width="53dp"
                     android:layout_height="43dp"
@@ -118,7 +117,7 @@
         android:id="@+id/frag"
         android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:name="com.example.taskdo.TaskMenu"
+        android:name="com.example.taskdo.MenuHandler.TaskMenu"
         tools:layout="@layout/fragment_task_menu"
         android:gravity="end"
         android:layout_gravity="end"

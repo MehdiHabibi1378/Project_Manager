@@ -1,4 +1,4 @@
-package com.example.taskdo;
+package com.example.taskdo.TaskHandler;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,11 +13,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.taskdo.GetData;
+import com.example.taskdo.Listener.OnItemSelectedListener;
+import com.example.taskdo.Listener.OnLoginFormActivityListener;
+import com.example.taskdo.MainActivity;
+import com.example.taskdo.R;
+import com.example.taskdo.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +58,16 @@ public class AssignPerson extends Fragment implements OnItemSelectedListener {
         updateMembers();
         MemberAdapter adapter = new MemberAdapter(project_members,this);
         assign_grid.setAdapter(adapter);
+
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                loginFormActivityListener.performTaskInfo();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(),callback);
+
         return view;
     }
 

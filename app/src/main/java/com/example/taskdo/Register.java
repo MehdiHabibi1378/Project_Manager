@@ -49,27 +49,31 @@ public class Register extends Fragment {
         String email = Email.getText().toString();
         String username = Username.getText().toString();
         String password = UserPassword.getText().toString();
+        if (name!=null && email!=null && username!=null && password!=null) {
 
-        Call<User> call = MainActivity.apiInterface.preformRegistration(name,email,username,password);
+            Call<User> call = MainActivity.apiInterface.preformRegistration(name, email, username, password);
 
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.body().getResponse().equals("ok")){
-                    MainActivity.prefConfig.displayToast("Registration seccess....");
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.body().getResponse().equals("ok")) {
+                        MainActivity.prefConfig.displayToast("Registration seccess....");
 
-                }else if (response.body().getResponse().equals("exist")){
-                    MainActivity.prefConfig.displayToast("User already exist...");
-                }else if (response.body().getResponse().equals("error")){
-                    MainActivity.prefConfig.displayToast("Somting went wrong");
+                    } else if (response.body().getResponse().equals("exist")) {
+                        MainActivity.prefConfig.displayToast("User already exist...");
+                    } else if (response.body().getResponse().equals("error")) {
+                        MainActivity.prefConfig.displayToast("Somting went wrong");
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        }else {
+            MainActivity.prefConfig.displayToast("Fill in all the blanks");
+        }
         Name.setText("");
         Email.setText("");
         Username.setText("");

@@ -1,4 +1,6 @@
-package com.example.taskdo;
+package com.example.taskdo.Listener;
+
+import com.example.taskdo.User;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -7,7 +9,7 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     @GET("register.php")
-    Call<User> preformRegistration(@Query("name") String Name,@Query("email") String Email,@Query("user_name") String UserName,@Query("user_password") String UserPassword);
+    Call<User> preformRegistration(@Query("name") String Name, @Query("email") String Email, @Query("user_name") String UserName, @Query("user_password") String UserPassword);
 
     @GET("login.php")
     Call<User> performUserLogin(@Query("user_name") String UserName,@Query("user_password") String UserPassword);
